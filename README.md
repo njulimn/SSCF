@@ -1,7 +1,7 @@
 # Seesaw Counting Filter
 
 # About this repo
-This repo contains the source code of SSCF and comparison algorithms in our experiments, which are as shown in the following table.
+This repo contains all the source codes of SSCF together with other comparison algorithms, which are detailed in the following table.
 
 |Algorithm| Description|
 |----|----|
@@ -13,15 +13,13 @@ This repo contains the source code of SSCF and comparison algorithms in our expe
 # Requirement 
    1. cmake@3+
    2. make
-# Build
-
-Build benchmarking executable file
+   3. recommended compiler: g++ or clang
+# How to build
 ```bash
 mkdir -p build && cd build && cmake .. && make
 ```
-# BenchMarking
-Run benchmark
-```Bash
+# How to run the benchmark
+```bash
 ./experiment_weightedFPR
 ./experiment_latency
 ```
