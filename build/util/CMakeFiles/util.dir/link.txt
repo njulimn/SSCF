@@ -1,2 +1,0 @@
-/usr/bin/ar qc libutil.a  CMakeFiles/util.dir/hashutil.cpp.o CMakeFiles/util.dir/cityhash/city.cc.o CMakeFiles/util.dir/murmurhash/MurMurHash.cpp.o
-/usr/bin/ranlib libutil.a

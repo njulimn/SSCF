@@ -52,7 +52,7 @@ class CountingBloom{
     int counting_bloom_check_default(HABFilterKey &key, size_t &notMapNum, size_t &notMapIdx);
     int counting_bloom_check(HABFilterKey &key, size_t newHashIdx);
     int counting_bloom_check_opt(HABFilterKey &key, size_t hashValue);
-    size_t GetHaveInsertNum(){return header->count;};//已经插入到bloom中的个数
+    size_t GetHaveInsertNum(){return header->count;};
     int counting_bloom_remove(HABFilterKey &key);
 
     //bitmap operation
@@ -311,7 +311,7 @@ void SeesawCF::Add(Slice &key){
                 for (size_t newHashIdx = nHashFunc + 1; newHashIdx <= nHashFunc + 2; newHashIdx++)
                 {
                         h1 = XXH3_128bits_withSeed(&key.str[0], key.str.size(), newHashIdx).low64 % numCounter_cb;
-                        if (cost_eachCounter_tmp[h1]==0)  //可调
+                        if (cost_eachCounter_tmp[h1]==0)  
                         {   
                             //hashModulator_->AddCounterByOne(key,bitpos_he, 1); 
                             hashModulator_->Add(key, cellpos, bitpos_he, newHashIdx);   
@@ -326,7 +326,7 @@ void SeesawCF::Add(Slice &key){
                         } 
                 }
                 hashModulator_->AddCounterByOne(key,cellpos, bitpos_he, 1);
-                countBloom_->bitmap_increment_adapt_opt(h);  //如果为空，调失败，需要+1？
+                countBloom_->bitmap_increment_adapt_opt(h);  
                 for(oldHashIdx+=1 ; oldHashIdx <= nHashFunc; oldHashIdx++)
                 {         
                     h1 = XXH3_128bits_withSeed(&key.str[0], key.str.size(), oldHashIdx).low64 % numCounter_cb;
@@ -694,7 +694,7 @@ bitmap_t *CountingBloom::bitmap_resize(bitmap_t *bitmap, size_t old_size, size_t
     if (bitmap->array != NULL) {
 #if __linux
         //bitmap->array = mremap(bitmap->array, old_size, new_size, MREMAP_MAYMOVE);
-   	  bitmap->array = (char *)realloc(bitmap->array, new_size); //注意。。。。。。。。。。。。。。。。。。。。。。。。
+   	  bitmap->array = (char *)realloc(bitmap->array, new_size); 
       
         if (bitmap->array == NULL) {
             perror("Error resizing realloc");

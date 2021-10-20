@@ -79,7 +79,7 @@ uint64_t rotl64(uint64_t n, unsigned int c) {
     // assumes width is a power of 2
     const unsigned int mask = (CHAR_BIT * sizeof(n) - 1);
     // assert ( (c<=mask) &&"rotate by type width or more");
-    c &= mask;   //取末六位
+    c &= mask;   
     return (n << c) | ( n >> ((-c) & mask));
 }
 
